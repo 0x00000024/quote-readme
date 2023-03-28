@@ -9,7 +9,7 @@ import sys
 import random
 import base64
 from typing import List
-from github import Github, GithubException
+from github import Github, GithubException, InputGitAuthor
 
 STARTS_WITH = "<!--STARTS_HERE_QUOTE_README-->"
 ENDS_WITH = "<!--ENDS_HERE_QUOTE_README-->"
@@ -17,6 +17,10 @@ REPL_PATTERN = f"{STARTS_WITH}[\\s\\S]+{ENDS_WITH}"
 
 REPOSITORY = os.getenv("INPUT_REPOSITORY")
 GH_TOKEN = os.getenv("INPUT_GH_TOKEN")
+COMMIT_AUTHOR_EMAIL = os.getenv("INPUT_COMMIT_AUTHOR_EMAIL")
+COMMIT_AUTHOR_NAME = os.getenv("INPUT_COMMIT_AUTHOR_NAME")
+COMMIT_EMAIL = os.getenv("INPUT_COMMIT_EMAIL")
+COMMIT_USERNAME = os.getenv("INPUT_COMMIT_USERNAME")
 COMMIT_MSG = os.getenv("INPUT_COMMIT_MESSAGE")
 OPTION = os.getenv("INPUT_OPTION")
 
@@ -113,8 +117,10 @@ if __name__ == "__main__":
     readme_content_decoded = decode_readme(readme_content)
     new_readme = generate_new_readme(readme=readme_content_decoded, i_tag=text_to_display)
     if readme_content_decoded != new_readme:
+        author = InputGitAuthor(name=COMMIT_AUTHOR_NAME, email=COMMIT_AUTHOR_EMAIL)
+        committer = InputGitAuthor(name=COMMIT_USERNAME, email=COMMIT_EMAIL)
         readme_repo.update_file(path=readme_obj.path, message=COMMIT_MSG,
-                             content=new_readme, sha=readme_obj.sha)
+                                content=new_readme, sha=readme_obj.sha, committer=committer, author=author)
         print("Success")
     else:
         print('No change')

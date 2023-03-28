@@ -18,6 +18,26 @@ inputs:
     default: "both"
     required: false
 
+  COMMIT_AUTHOR_EMAIL:
+    description: "Add a commit author email of your choice"
+    default: "41898282+github-actions[bot]@users.noreply.github.com"
+    required: false
+
+  COMMIT_AUTHOR_NAME:
+    description: "Add a commit author name of your choice"
+    default: "github-actions[bot]"
+    required: false
+
+  COMMIT_EMAIL:
+    description: "Add a commit email of your choice"
+    default: "41898282+github-actions[bot]@users.noreply.github.com"
+    required: false
+
+  COMMIT_USERNAME:
+    description: "Add a commit username of your choice"
+    default: "github-actions[bot]"
+    required: false
+
   COMMIT_MESSAGE:
     description: "Add a commit message of your choice"
     default: "Update with quote-readme"

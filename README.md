@@ -152,6 +152,10 @@ For example, if your workflow is present in `<username>/repo1` and you want to u
   with:
     GH_TOKEN: ${{ secrets.GH_TOKEN }}     # Needed if README repository is not profile repo
     REPOSITORY: <username>/<differentrepo>  # Needed if README repository is not current repo
+    COMMIT_AUTHOR_EMAIL: <your-email>       # default - 41898282+github-actions[bot]@users.noreply.github.com
+    COMMIT_AUTHOR_NAME: <your-name>         # default - github-actions[bot]
+    COMMIT_EMAIL: <your-email>              # default - 41898282+github-actions[bot]@users.noreply.github.com
+    COMMIT_USERNAME: <your-username>        # default - github-actions[bot]
     COMMIT_MESSAGE: <your-commit-message>       # default - Update with quote-readme
 ```
 
@@ -162,6 +166,10 @@ For example, if your workflow is present in `<username>/repo1` and you want to u
   with:
     GH_TOKEN: ${{ secrets.GH_TOKEN }}     # Needed if README repository is not profile repo
     REPOSITORY: <username>/<differentrepo>  # Needed if README repository is not current repo
+    COMMIT_AUTHOR_EMAIL: <your-email>       # default - 41898282+github-actions[bot]@users.noreply.github.com
+    COMMIT_AUTHOR_NAME: <your-name>         # default - github-actions[bot]
+    COMMIT_EMAIL: <your-email>              # default - 41898282+github-actions[bot]@users.noreply.github.com
+    COMMIT_USERNAME: <your-username>        # default - github-actions[bot]
     COMMIT_MESSAGE: <your-commit-message>       # default - Update with quote-readme
     OPTION: both            # default - both, can be one of (quote, funfact, both), if 'both' then will display either a quote or a fact
 ```
